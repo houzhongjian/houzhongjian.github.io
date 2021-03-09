@@ -1,0 +1,83 @@
+@font-face{
+    font-family: 'SERIF';
+    src : url("../fonts/SERIF.ttf");
+}
+body {
+    padding: 0;
+    margin: 0;
+    background: #FFFFFF;
+    color: #333333;
+    font-family: SERIF;
+    font-size: 100%;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+}
+.px_600 {
+    width: 600px;
+}
+.px_800 {
+    width: 800px;
+}
+
+.container h1 {
+    width: 100%;
+    min-height: 60px;
+    line-height: 60px;
+    font-size: 36px;
+}
+
+.container h2 {
+    width: 100%;
+    min-height: 48px;
+    line-height: 48px;
+    font-size: 28px;
+}
+.container .title {
+    height: 30px;
+    line-height: 30px;
+    font-size: 18px;
+    font-weight: 400;
+}
+.container .title a{
+    /*display: block;*/
+    color: #117ac9;
+    text-decoration:none;
+}
+.container .title a:hover {
+    /*display: block;*/
+    color: #117ac9;
+    text-decoration:underline;
+}
+
+.container p {
+    background: #FFFFFF;
+    line-height: 30px;
+    font-size: 18px;
+}
+
+.container pre {
+    background: #f4f4f4;
+    padding: 10px;
+    line-height: 30px;
+    width: 100%;
+    margin: 0;
+    border-radius: 3px;
+    font-size: 16px;
+
+    white-space: pre-wrap;
+    word-break: break-word;
+    word-wrap: break-word;
+
+}
+
+.container .date {
+    display: inline;
+    float: right;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    color: #444;
+}
