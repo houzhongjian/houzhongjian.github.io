@@ -35,14 +35,18 @@ body {
     line-height: 48px;
     font-size: 28px;
 }
-.container .title {
+.hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #cccccc;
+}
+.container  .title {
     height: 30px;
     line-height: 30px;
     font-size: 18px;
     font-weight: 400;
 }
 .container .title a{
-    /*display: block;*/
     color: #117ac9;
     text-decoration:none;
 }
@@ -80,4 +84,11 @@ body {
     line-height: 30px;
     font-size: 14px;
     color: #444;
+}
+.container ul {
+    list-style: unset;
+}
+.container ul li{
+    height: 40px;
+    line-height: 40px;
 }
