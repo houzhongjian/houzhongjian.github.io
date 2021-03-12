@@ -101,3 +101,21 @@ body {
     padding-right: 5px;
     border-radius: 5px;
 }
+.container .pic {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+    background: #fafafa;
+    border-radius: 5px;
+
+}
+.container .pic img {
+    width: 100%;
+}
+.container .pic .pic_desc {
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    text-align: center;
+    color: #aaaaaa;
+}
