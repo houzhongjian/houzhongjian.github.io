@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2021年体重曲线分布图</title>
+    <meta name="keywords" content="2021,体重曲线"/>
+    <meta name="description" content="2021体重曲线"/>
+    <link rel=stylesheet href="../../static/css/default.css">
+    <script src="../../static/charts/chart.min.js"></script>
+</head>
+<body>
+<div class="container px_800">
+    <h1>2021年体重曲线分布图!</h1>
+    <!-- <p>可视化本年度体重信息。</p> -->
+    <canvas id="myChart" width="600" height="400"></canvas>
+    <h2 align="center">2021体重明细数据</h2>
+    <table border="0" cellpadding="0" cellspacing="0">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>日期</th>
+                <th>重量(KG)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>2021-05-30</td>
+                <td>84.80</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>2021-05-31</td>
+                <td>84.40</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>2021-06-01</td>
+                <td>84.00</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>2021-06-02</td>
+                <td>83.70</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="footer">Houzhongjian Blog - <a href="http://beian.miit.gov.cn/" target="_blank">蜀ICP备2021009156号-1</a></div>
+</body>
+</html>
+<script>
+    var ctx = document.getElementById('myChart');
+    var myLineChart = new Chart(ctx, {
+        type: "line",
+        data: {
+            labels: [
+                "2021-05-30",
+                "2021-05-31",
+                "2021-06-01",
+                "2021-06-02"
+            ],
+            datasets: [{
+                label: '当前体重(单位KG)',
+                backgroundColor: "#3ba5e9",
+                borderColor: "#3ba5e9",
+                fill: false,
+                data: [
+                    84.80,
+                    84.40,
+                    84.00,
+                    83.70
+                ],
+            }]
+        },
+        options: {
+            title: {
+                text: 'Chart.js Time Scale'
+            },
+            scales: {
+                xAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Date'
+                    }
+                }],
+                yAxes: [{
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'value'
+                    }
+                }]
+            },
+        }
+    });
+</script>
