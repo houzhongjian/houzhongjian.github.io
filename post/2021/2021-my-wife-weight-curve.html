@@ -1,160 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>2021年体重曲线分布图</title>
-    <meta name="keywords" content="2021,体重曲线"/>
-    <meta name="description" content="2021体重曲线"/>
+    <meta name="keywords" content="2021,体重曲线" />
+    <meta name="description" content="2021体重曲线" />
     <link rel=stylesheet href="../../static/css/default.css">
     <script src="../../static/charts/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
 </head>
+
 <body>
-<div class="container px_800">
-    <h1>2021年体重曲线分布图!</h1>
-    <!-- <p>可视化本年度体重信息。</p> -->
-    <canvas id="myChart" width="600" height="400"></canvas>
-    <h2 align="center">2021体重明细数据</h2>
-    <table border="0" cellpadding="0" cellspacing="0">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>日期</th>
-                <th>重量(KG)</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>1</td>
-                <td>2021-06-05</td>
-                <td>62.10</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>2021-06-06</td>
-                <td>61.80</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>2021-06-07</td>
-                <td>61.90</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>2021-06-08</td>
-                <td>62.20</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>2021-06-09</td>
-                <td>61.90</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>2021-06-10</td>
-                <td>61.60</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>2021-06-11</td>
-                <td>61.50</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>2021-06-12</td>
-                <td>61.20</td>
-            </tr>
-             <tr>
-                <td>9</td>
-                <td>2021-06-13</td>
-                <td>60.80</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>2021-06-14</td>
-                <td>61.30</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td>2021-06-15</td>
-                <td>61.10</td>
-            </tr>
-            <tr>
-                <td>12</td>
-                <td>2021-06-16</td>
-                <td>61.50</td>
-            </tr>
-            <tr>
-                <td>13</td>
-                <td>2021-06-17</td>
-                <td>61.20</td>
-            </tr>
-            <tr>
-                <td>14</td>
-                <td>2021-06-18</td>
-                <td>61.05</td>
-            </tr>  
-            <tr>
-                <td>15</td>
-                <td>2021-06-19</td>
-                <td>60.65</td>
-            </tr>  
-            <tr>
-                <td>16</td>
-                <td>2021-06-20</td>
-                <td>60.45</td>
-            </tr> 
-        </tbody>
-    </table>
-</div>
-<div class="footer">Houzhongjian Blog - <a href="http://beian.miit.gov.cn/" target="_blank">蜀ICP备2021009156号-1</a></div>
+    <div id="container" class="container px_800">
+        <h1>2021年体重曲线分布图!</h1>
+        <!-- <p>可视化本年度体重信息。</p> -->
+        <canvas id="myChart" width="600" height="400"></canvas>
+        <h2 align="center">2021体重明细数据</h2>
+        <table border="0" cellpadding="0" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>日期</th>
+                    <th>重量(KG)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(item,index) in weightData">
+                    <td>{{index}}</td>
+                    <td>{{item.changeDate}}</td>
+                    <td>{{item.weight}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="footer">Houzhongjian Blog - <a href="http://beian.miit.gov.cn/" target="_blank">蜀ICP备2021009156号-1</a>
+    </div>
 </body>
+
 </html>
+<script src="../../static/charts/ljyWeight.js"></script>
 <script>
+    var getData = data.weightData;
+    new Vue({
+        el: "#container",
+        data: {
+            weightData:getData,
+        }
+
+    })
+
+    var dateData = getData.map(item => {
+        return item.changeDate;
+      })
+    var weightData = getData.map(item => {
+        return Number(item.weight) 
+    })
+      console.log("~~~~~~",dateData,weightData)
     var ctx = document.getElementById('myChart');
     var myLineChart = new Chart(ctx, {
         type: "line",
         data: {
-            labels: [
-                "2021-06-05",
-                "2021-06-06",
-                "2021-06-07",
-                "2021-06-08",
-                "2021-06-09",
-                "2021-06-10",
-                "2021-06-11",
-                "2021-06-12",
-                "2021-06-13",
-                "2021-06-14",
-                "2021-06-15",
-                "2021-06-16",
-                "2021-06-17",
-                "2021-06-18",
-                "2021-06-19",
-                "2021-06-20"
-            ],
+            labels: dateData,
             datasets: [{
                 label: '当前体重(单位KG)',
                 backgroundColor: "#3ba5e9",
                 borderColor: "#3ba5e9",
                 fill: false,
-                data: [
-                    62.10,
-                    61.80,
-                    61.90,
-                    62.20,
-                    61.90,
-                    61.60,
-                    61.50,
-                    61.10,
-                    60.80,
-                    61.30,
-                    61.10,
-                    61.50,
-                    61.20,
-                    61.05,
-                    60.65,
-                    60.45
-                ],
+                data: weightData
             }]
         },
         options: {
@@ -173,7 +86,7 @@
                         display: true,
                         labelString: 'value'
                     }
-                }] 
+                }]
             },
         }
     });
