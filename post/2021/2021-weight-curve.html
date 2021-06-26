@@ -7,9 +7,10 @@
     <meta name="description" content="2021体重曲线"/>
     <link rel=stylesheet href="../../static/css/default.css">
     <script src="../../static/charts/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
 </head>
 <body>
-<div class="container px_800">
+<div id="theContainer" class="container px_800">
     <h1>2021年体重曲线分布图!</h1>
     <!-- <p>可视化本年度体重信息。</p> -->
     <canvas id="myChart" width="600" height="400"></canvas>
@@ -23,208 +24,44 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>1</td>
-                <td>2021-05-30</td>
-                <td>84.80</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>2021-05-31</td>
-                <td>84.40</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>2021-06-01</td>
-                <td>84.00</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>2021-06-02</td>
-                <td>83.70</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>2021-06-03</td>
-                <td>83.10</td>
-            </tr>
-             <tr>
-                <td>5</td>
-                <td>2021-06-04</td>
-                <td>82.90</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>2021-06-05</td>
-                <td>82.60</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>2021-06-06</td>
-                <td>82.50</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>2021-06-07</td>
-                <td>82.20</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>2021-06-08</td>
-                <td>82.30</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>2021-06-09</td>
-                <td>82.10</td>
-            </tr>   
-            <tr>
-                <td>11</td>
-                <td>2021-06-10</td>
-                <td>81.90</td>
-            </tr> 
-            <tr>
-                <td>12</td>
-                <td>2021-06-11</td>
-                <td>81.50</td>
-            </tr>
-            <tr>
-                <td>13</td>
-                <td>2021-06-12</td>
-                <td>81.10</td>
-            </tr>
-             <tr>
-                <td>14</td>
-                <td>2021-06-13</td>
-                <td>80.80</td>
-            </tr>
-             <tr>
-                <td>15</td>
-                <td>2021-06-14</td>
-                <td>81.10</td>
-            </tr>  
-             <tr>
-                <td>16</td>
-                <td>2021-06-15</td>
-                <td>80.80</td>
-            </tr>
-             <tr>
-                <td>17</td>
-                <td>2021-06-16</td>
-                <td>80.90</td>
-            </tr>
-             <tr>
-                <td>18</td>
-                <td>2021-06-17</td>
-                <td>80.80</td>
-            </tr>  
-            <tr>
-                <td>19</td>
-                <td>2021-06-18</td>
-                <td>80.40</td>
-            </tr> 
-            <tr>
-                <td>20</td>
-                <td>2021-06-19</td>
-                <td>79.50</td>
-            </tr>
-            <tr>
-                <td>21</td>
-                <td>2021-06-20</td>
-                <td>79.70</td>
-            </tr> 
-            <tr>
-                <td>22</td>
-                <td>2021-06-21</td>
-                <td>80.10</td>
-            </tr>   
-            <tr>
-                <td>23</td>
-                <td>2021-06-22</td>
-                <td>79.65</td>
-            </tr>
-            <tr>
-                <td>24</td>
-                <td>2021-06-23</td>
-                <td>79.40</td>
-            </tr>    
-            <tr>
-                <td>25</td>
-                <td>2021-06-24</td>
-                <td>79.20</td>
-            </tr>                
+            <tr v-for="(item,index) in weightData">
+                <td>{{index}}</td>
+                <td>{{item.changeDate}}</td>
+                <td>{{item.weight}}</td>
+            </tr>              
         </tbody>
     </table>
 </div>
 <div class="footer">Houzhongjian Blog - <a href="http://beian.miit.gov.cn/" target="_blank">蜀ICP备2021009156号-1</a></div>
 </body>
 </html>
+<script src="../../static/charts/hzjWeight.js"></script>
 <script>
+    var getData = data.weightData;
+    new Vue({
+        el: "#theContainer",
+        data: {
+            weightData:getData,
+        }
+    })
+     var dateData = getData.map(item => {
+        return item.changeDate;
+      })
+    var weightData = getData.map(item => {
+        return  Number(item.weight)
+    })
+    console.log(weightData)
     var ctx = document.getElementById('myChart');
     var myLineChart = new Chart(ctx, {
         type: "line",
         data: {
-            labels: [
-                "2021-05-30",
-                "2021-05-31",
-                "2021-06-01",
-                "2021-06-02",
-                "2021-06-03",
-                "2021-06-04",
-                "2021-06-05",
-                "2021-06-06",
-                "2021-06-07",
-                "2021-06-08",
-                "2021-06-09",
-                "2021-06-10",
-                "2021-06-11",
-                "2021-06-12",
-                "2021-06-13",
-                "2021-06-14",
-                "2021-06-15",
-                "2021-06-16",
-                "2021-06-17",
-                "2021-06-18",
-                "2021-06-19",
-                "2021-06-20",
-                "2021-06-21",
-                "2021-06-22",
-                "2021-06-23",
-                "2021-06-24"
-            ],
+            labels: dateData,
             datasets: [{
                 label: '当前体重(单位KG)',
                 backgroundColor: "#3ba5e9",
                 borderColor: "#3ba5e9",
                 fill: false,
-                data: [
-                    84.80,
-                    84.40,
-                    84.00,
-                    83.70,
-                    83.10,
-                    82.90,
-                    82.60,
-                    82.50,
-                    82.20,
-                    82.30,
-                    82.10,
-                    81.90,
-                    81.50,
-                    81.10,
-                    80.80,
-                    81.10,
-                    80.80,
-                    80.90,
-                    80.80,
-                    80.40,
-                    79.50,
-                    79.70,
-                    80.10,
-                    79.65,
-                    79.40,
-                    79.20
-                ],
+                data: weightData,
             }]
         },
         options: {
