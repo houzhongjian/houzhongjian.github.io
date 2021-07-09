@@ -123,6 +123,14 @@ var data = {
         {
             "changeDate": "2021-07-07",
             "weight": "60.65"
+        },
+        {
+            "changeDate": "2021-07-08",
+            "weight": "60.90"
+        },
+        {
+            "changeDate": "2021-07-09",
+            "weight": "60.30"
         }
        
     ]
