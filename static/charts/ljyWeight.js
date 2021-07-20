@@ -131,8 +131,47 @@ var data = {
         {
             "changeDate": "2021-07-09",
             "weight": "60.30"
+        },
+        {
+            "changeDate": "2021-07-10",
+            "weight": "60.40"
+        },
+        {
+            "changeDate": "2021-07-11",
+            "weight": "60.20"
+        },
+        {
+            "changeDate": "2021-07-12",
+            "weight": "60.40"
+        },
+        {
+            "changeDate": "2021-07-13",
+            "weight": "60.55"
+        },
+        {
+            "changeDate": "2021-07-14",
+            "weight": "60.85"
+        },
+        {
+            "changeDate": "2021-07-15",
+            "weight": "60.85"
+        },
+        {
+            "changeDate": "2021-07-16",
+            "weight": "60.95"
+        },
+        {
+            "changeDate": "2021-07-17",
+            "weight": "60.95"
+        },
+        {
+            "changeDate": "2021-07-18",
+            "weight": "60.70"
+        },
+        {
+            "changeDate": "2021-07-19",
+            "weight": "60.50"
         }
-       
     ]
 
 }
